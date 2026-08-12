@@ -11,8 +11,8 @@ st.set_page_config(
 )
 
 # App title
-# st.title("Stock Market Visualization")
-# st.write("Search for Stocks and Visualize them.")
+st.title("Stock Market Visualization")
+st.write("Search for Stocks and Visualize them.")
 
 # Ticker Search
 # Ticker means short symbol of the company. Example: AAPL is the short symbol/Ticker of Apple company. 
