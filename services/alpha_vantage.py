@@ -13,9 +13,15 @@ BASE_URL = "https://www.alphavantage.co/query"
 
 
 # ==========================================
-# Get Daily Stock Data
+# Daily Stock Data
 # ==========================================
 
+# Appling Caching because of daily API request limitation
+# We will store data of ticker in cache memory for 1 hour (3600 seconds)
+# If user wants same data again: then we dont make an new API call again, we just return the data through cache
+# If data not present cache: we will make API call, and store it in cache for 1 hour
+
+@st.cache_data(ttl=3600)
 def get_daily_data(ticker):
 
     params = {
@@ -57,10 +63,14 @@ def get_daily_data(ticker):
         return None
 
 
+    # ==========================================
+    # API Rate Limit
+    # ==========================================
+
     if "Note" in result:
 
-        st.warning(
-            "Alpha Vantage API request limit reached. "
+        st.error(
+            "Alpha Vantage API rate limit reached. "
             "Please try again later."
         )
 
