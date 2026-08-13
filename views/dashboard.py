@@ -52,20 +52,47 @@ def show_dashboard():
 
 
         # ==========================================
-        # Price Chart
+        # Dashboard Navigation
         # ==========================================
 
-        display_price_chart(
-            ticker,
-            data
+        selected_tab = st.segmented_control(
+            "View",
+            options=[
+                "📊 Charts",
+                "📋 Fundamentals"
+            ],
+            default="📊 Charts",
+            label_visibility="collapsed"
         )
 
 
         # ==========================================
-        # Volume Chart
+        # Charts
         # ==========================================
 
-        display_volume_chart(
-            ticker,
-            data
-        )
+        if selected_tab == "📊 Charts":
+
+            display_price_chart(
+                ticker,
+                data
+            )
+
+            display_volume_chart(
+                ticker,
+                data
+            )
+
+
+        # ==========================================
+        # Fundamentals
+        # ==========================================
+
+        elif selected_tab == "📋 Fundamentals":
+
+            st.subheader(
+                "📋 Fundamentals"
+            )
+
+            st.info(
+                "Fundamentals section will be added soon."
+            )
