@@ -7,11 +7,11 @@ import streamlit as st
 
 POPULAR_STOCKS = [
     "AAPL",
-    "MSFT",
     "GOOGL",
-    "AMZN",
-    "TSLA",
-    "NVDA"
+    "NVDA",
+    "RELIANCE.BSE",
+    "TCS.BSE",
+    "HDFCBANK.BSE"
 ]
 
 
@@ -50,6 +50,7 @@ def render_stock_search():
     # ------------------------------------------
 
     st.write("Popular Stocks")
+    st.write("Pro Tip: Use .BSE for Bombay Stock Exchange (BSE) Stocks")
 
     columns = st.columns(len(POPULAR_STOCKS))
 
